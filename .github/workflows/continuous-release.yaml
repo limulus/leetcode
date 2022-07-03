@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '16' ]
+        node: ['16']
     name: verify using node v${{ matrix.node }}
     steps:
       - uses: actions/checkout@v3
@@ -25,3 +25,10 @@ jobs:
         with:
           name: coverage (node v${{ matrix.node }})
           path: coverage/
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
