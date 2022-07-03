@@ -45,7 +45,7 @@
     "@limulus/eslint-config": "^4.0.0",
     "@swc/jest": "^0.2.21",
     "@types/jest": "^28.1.1",
-    "@types/node": "^17.0.42",
+    "@types/node": "^18.0.0",
     "concurrently": "^7.2.1",
     "cross-env": "^7.0.3",
     "del-cli": "^4.0.1",
