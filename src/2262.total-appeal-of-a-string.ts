@@ -6,6 +6,10 @@
 
 // @lc code=start
 
+/**
+ * This uses the algorithm provided by the hints, but improves upon its performance by
+ * using a `Map` to store the characters we have seen and where we last saw them.
+ */
 function appealSum(s: string): number {
   let appealSum = 0
 
@@ -24,6 +28,12 @@ function appealSum(s: string): number {
 
 export { appealSum }
 
+/**
+ * First attempt of the appealSum problem. The first pass at this solution just did a
+ * naive brute force of the problem but it was unsurprisingly too slow. I figured creating
+ * a `Set` for each index and adding the chars to that set as the substring size grew
+ * might be fast enough, but this was still too slow.
+ */
 export function firstAttempt(s: string) {
   let appealSum = 0
 
@@ -41,7 +51,12 @@ export function firstAttempt(s: string) {
 
   return appealSum
 }
-
+/**
+ * The second attempt uses a `Map` for each substring length. The idea is that `Map` is a
+ * window the size of the substring length and each iteration all that is required to
+ * calculate the appeal is to add/remove the chars at either end of the window as it
+ * advances. This proved to be slower than the first attempt.
+ */
 export function secondAttempt(s: string) {
   let appealSum = 0
 
@@ -67,6 +82,11 @@ export function secondAttempt(s: string) {
   return appealSum
 }
 
+/**
+ * The third attemp is similar to the second, but improves upon it by starting out with
+ * the window being large and progressively getting smaller. This improves the speed so
+ * that it is faster than the first attempt but not by much and only for large 𝑛.
+ */
 export function thirdAttempt(s: string) {
   let appealSum = 0
 
@@ -99,6 +119,11 @@ export function thirdAttempt(s: string) {
   return appealSum
 }
 
+/**
+ * I finally gave in and read the hints. This is a rather straightforward implementation
+ * of the algorithm provided by the hints, but I saw an obvious improvement which I made
+ * in my final submission.
+ */
 export function fourthAttempt(s: string) {
   let appealSum = 0
 
